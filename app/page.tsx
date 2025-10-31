@@ -24,6 +24,7 @@ function Bungalow() {
 
   useEffect(() => {
     if (authenticated && user?.twitter && wallets.length) {
+      // @ts-ignore
       supabase.from('subs').upsert({
         twitter_id: user.twitter.id,
         wallet_base: wallets.find(w => w.chainId === 8453)?.address || '',
