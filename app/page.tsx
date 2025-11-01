@@ -32,37 +32,4 @@ function Bungalow() {
         last_ping: new Date().toISOString(),
       });
     }
-  }, [authenticated, user, wallets]);
-
-  const spin = async () => {
-    const { data } = await supabase
-      .from('subs')
-      .select()
-      .gt('last_ping', new Date(Date.now() - 5*24*3600*1000).toISOString());
-    if (!data?.length) return alert('Login first!');
-    const rand = data[Math.floor(Math.random() * data.length)];
-    setWinner(rand);
-    alert(`🎉 WINNER: @${rand.twitter_id.slice(0,8)}!`);
-  };
-
-  if (!authenticated) {
-    return (
-      <div style={{padding: 100, textAlign: 'center'}}>
-        <h1 style={{fontSize: 48}}>🏝️ The Bungalow</h1>
-        <button onClick={login} style={{padding: 20, fontSize: 20, background: '#1d9bf0', color: 'white'}}>
-          Login with X → Auto-Enter Giveaways
-        </button>
-      </div>
-    );
-  }
-
-  return (
-    <div style={{padding: 100, textAlign: 'center'}}>
-      <h1 style={{fontSize: 48}}>🏝️ The Bungalow</h1>
-      <button onClick={spin} style={{padding: 20, fontSize: 20, background: 'green', color: 'white'}}>
-        SPIN WINNER!
-      </button>
-      {winner && <h2 style={{color: 'gold'}}>WINNER: @{winner.twitter_id.slice(0,8)}</h2>}
-    </div>
-  );
-}
+  }, [authenticated
