@@ -12,6 +12,7 @@
     "react": "^18",
     "react-dom": "^18",
     "@privy-io/react-auth": "^1.90.0",
-    "@supabase/supabase-js": "^2.45.4"
+    "@supabase/supabase-js": "^2.45.4",
+    "viem": "^2.25.0"
   }
 }
